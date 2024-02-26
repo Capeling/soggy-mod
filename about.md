@@ -1,3 +1,3 @@
-# Template Mod
+# Soggy Mod
 
-Edit about.md to change this
+Sog your game with the Soggy Mod! Check your icon kit. Now.

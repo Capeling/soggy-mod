@@ -1,3 +1,3 @@
-# soggy-mod
+# Soggy Mod
 
-This is where she makes a mod.
+Sog your game with the Soggy Mod! Check your icon kit. Now.
