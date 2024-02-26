@@ -33,6 +33,7 @@ jobs:
         uses: geode-sdk/build-geode-mod@main
         with:
           sdk: nightly
+          bindings: "Capeling/bindings"
           combine: true
           target: ${{ matrix.config.target }}
       
