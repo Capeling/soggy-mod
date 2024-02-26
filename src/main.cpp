@@ -21,6 +21,7 @@ class $modify(GJGarageLayerExt, GJGarageLayer) {
 		sogBtn->m_animationType = MenuAnimationType::Move;
 		sogBtn->m_startPosition = sogSpr->getPosition();
 		sogBtn->m_destPosition = ccp(0, -15.f);
+		sogBtn->setPositionY(-2);
 		this->addChild(sogMenu);
 		return true;
 	}

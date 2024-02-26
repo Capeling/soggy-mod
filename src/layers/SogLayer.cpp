@@ -58,15 +58,9 @@ void SogLayer::onClose(CCObject*) {
 
     auto scene = director->getRunningScene();
     GJGarageLayer* garage;
-    #ifdef GEODE_IS_ANDROID64
-    auto gNew = new GJGarageLayer(ZeroConstructor);
-    if(gNew && gNew->init()) {
-        gNew->autorelease();
-        garage = gNew;
-    } else {
-        CC_SAFE_DELETE(gNew);
-        garage = nullptr;
-    }
+    #ifdef GEODE_IS_ANDROID64 //lol
+    auto scene2 = GJGarageLayer::scene();
+    garage = getChildOfType<GJGarageLayer>(scene2, 0);
     #else
     garage = GJGarageLayer::node();
     #endif
