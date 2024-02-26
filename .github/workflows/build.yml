@@ -18,8 +18,8 @@ jobs:
           #os: ubuntu-latest
           #target: Android32
         #- name: Android64
-          os: ubuntu-latest
-          target: Android64
+          #os: ubuntu-latest
+          #target: Android64
         - name: macOS
           os: macos-latest
 
