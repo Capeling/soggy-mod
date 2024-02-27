@@ -9,13 +9,12 @@ class $modify(GJGarageLayerExt, GJGarageLayer) {
 			return false;
 		auto director = CCDirector::sharedDirector();
     	auto winSize = director->getWinSize();
-		auto topMenu = this->getChildByID("top-left-menu");
 
 		auto sogSpr = CCSprite::createWithSpriteFrameName("GJ_soggyBtn_001.png"_spr);
 		auto sogBtn = CCMenuItemSpriteExtra::create(sogSpr, this, menu_selector(GJGarageLayerExt::onSog));
 		
 		auto sogMenu = CCMenu::create();
-		sogMenu->setPosition(ccp((winSize.width / 2) + 141, topMenu->getPositionY()));
+		sogMenu->setPosition(ccp((winSize.width / 2) + 141, director->getScreenTop() - 23));
 		sogMenu->addChild(sogBtn);
 
 		sogBtn->m_animationType = MenuAnimationType::Move;
