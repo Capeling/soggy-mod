@@ -8,9 +8,6 @@
 	"version": "v1.0.2",
 	"id": "capeling.soggy-mod",
 	"name": "Soggy Mod",
-	"tags": [
-		"soggy"
-	],
 	"developers":[
 		"Capeling",
 		"availax"
