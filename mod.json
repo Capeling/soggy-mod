@@ -9,10 +9,6 @@
 	"id": "capeling.soggy-mod",
 	"name": "Soggy Mod",
 	"developer": "Capeling & availax",
-	"developers":[
-		"Capeling",
-		"availax"
-	],
 	"description": "Sog your game with the Soggy Mod! Check your icon kit. Now.",
 	"resources": {
 		"spritesheets": {
