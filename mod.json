@@ -5,10 +5,13 @@
 		"mac": "2.200",
 		"win": "2.204"
 	},
-	"version": "v1.0.3",
+	"version": "v1.0.4",
 	"id": "capeling.soggy-mod",
 	"name": "Soggy Mod",
-	"developer": "Capeling & availax",
+	"developers": [
+		"Capeling",
+		"Availax"
+	],
 	"description": "Sog your game with the Soggy Mod! Check your icon kit. Now.",
 	"resources": {
 		"spritesheets": {
