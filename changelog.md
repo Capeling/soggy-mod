@@ -4,9 +4,9 @@
 ## v1.0.5
 - Add iOS support
 ## v1.0.4
-- Fixed another mod purposfully removing the button due to the developers personal opinions
+- Fixed another mod purposefully removing the button due to the developers personal opinions
 ## v1.0.3
-- Removed "soggy" tag (In preperation for new index)
+- Removed "soggy" tag (In preparation for new index)
 ## v1.0.2
 - Removed need for Node IDS (dependency wasn't implemented properly anyway)
 ## v1.0.1
