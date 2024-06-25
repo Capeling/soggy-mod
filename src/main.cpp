@@ -33,14 +33,7 @@ public:
 		m_sogBtn->setPositionY(-2);
 		this->addChild(m_sogBtn);
 
-		scheduleUpdate();
-
 		return true;
-	}
-	virtual void update(float dt) {
-		m_sogBtn->setVisible(true);
-		m_sogSpr->setVisible(true);
-		setVisible(true);
 	}
 	void onSog(CCObject*) {
 		CCDirector::sharedDirector()->replaceScene(CCTransitionMoveInT::create(0.5f, SogLayer::scene()));
