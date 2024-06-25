@@ -61,7 +61,7 @@ void SogLayer::onClose(CCObject*) {
 #ifndef GEODE_IS_ANDROID64
     auto garage = GJGarageLayer::node();
 #else
-    auto garage = getChildOfType<GJGarageLayer*>(GJGarageLayer::scene(), 0);
+    auto garage = getChildOfType<GJGarageLayer>(GJGarageLayer::scene(), 0);
 #endif
 
     scene->addChild(garage, -1);
