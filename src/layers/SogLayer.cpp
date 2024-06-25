@@ -43,7 +43,8 @@ bool SogLayer::init() {
     backMenu->setPosition(ccp(director->getScreenLeft() + 25.f, director->getScreenTop() - 22.f));
     setKeyboardEnabled(true);
     setKeypadEnabled(true);
-    FMODAudioEngine::sharedEngine()->playMusic("SogLoop.mp3"_spr, true, 0.0f, 0);
+    GameManager::sharedState()->fadeInMusic("SogLoop.mp3"_spr);
+    //FMODAudioEngine::sharedEngine()->playMusic("SogLoop.mp3"_spr, true, 0.0f, 0);
     return true;
 }
 
@@ -57,7 +58,11 @@ void SogLayer::onClose(CCObject*) {
     auto winSize = director->getWinSize();
 
     auto scene = director->getRunningScene();
+#ifndef GEODE_IS_ANDROID64
     auto garage = GJGarageLayer::node();
+#else
+    auto garage = getChildOfType<GJGarageLayer*>(GJGarageLayer::scene(), 0);
+#endif
 
     scene->addChild(garage, -1);
 
