@@ -1,4 +1,6 @@
 # Soggy Mod Changelog
+## v1.0.7
+- Finally fix soggy mod
 ## v1.0.6
 - Updated for 2.206
 ## v1.0.5
