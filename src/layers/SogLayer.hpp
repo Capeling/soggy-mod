@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Geode/Geode.hpp>
 
 class SogLayer : public cocos2d::CCLayer {

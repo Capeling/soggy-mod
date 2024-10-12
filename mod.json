@@ -1,19 +1,19 @@
 {
-	"geode": "3.0.0",
+	"geode": "3.8.1",
 	"gd": {
 		"android": "2.206",
 		"ios": "2.206",
 		"mac": "2.206",
 		"win": "2.206"
 	},
-	"version": "v1.0.6",
+	"version": "v1.0.7",
 	"id": "capeling.soggy-mod",
 	"name": "Soggy Mod",
 	"developers": [
 		"Capeling",
 		"availax"
 	],
-	"description": "Sog your game with the Soggy Mod! Check your icon kit. Now.",
+	"description": "Sog your game with the Soggy Mod!",
 	"resources": {
 		"spritesheets": {
 			"SoggySheet": [

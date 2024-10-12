@@ -1,4 +1,4 @@
-#include "SogLayer.h"
+#include "SogLayer.hpp"
 
 using namespace geode::prelude;
 
@@ -58,20 +58,20 @@ void SogLayer::onClose(CCObject*) {
     auto winSize = director->getWinSize();
 
     auto scene = director->getRunningScene();
-#ifndef GEODE_IS_ANDROID64
-    auto garage = GJGarageLayer::node();
-#else
-    auto garage = getChildOfType<GJGarageLayer>(GJGarageLayer::scene(), 0);
-#endif
+    auto garage = GJGarageLayer::scene();
 
-    scene->addChild(garage, -1);
+    CCDirector::get()->replaceScene(garage);
+
+    this->retain();
+    this->removeFromParentAndCleanup(false);
+    garage->addChild(this, 1000);
 
     auto moveTo = CCMoveTo::create(0.3f, ccp(0, winSize.height));
     auto easeIn = CCEaseIn::create(moveTo, 2.0f);
-    auto callFunc = CCCallFunc::create(this, callfunc_selector(SogLayer::onExit));
-    auto callFunc2 = CCCallFunc::create(this, callfunc_selector(SogLayer::removeFromParent));
+    auto callFunc = CCCallFunc::create(this, callfunc_selector(SogLayer::removeFromParent));
 
-    auto ccSeq = CCSequence::create(easeIn, callFunc, callFunc2, 0);
+    auto ccSeq = CCSequence::create(easeIn, callFunc, 0);
     this->runAction(ccSeq);
     GameManager::sharedState()->fadeInMenuMusic();
+
 }
