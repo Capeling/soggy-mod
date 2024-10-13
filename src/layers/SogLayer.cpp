@@ -24,8 +24,18 @@ bool SogLayer::init() {
         return false;
     auto director = CCDirector::sharedDirector();
     auto winSize = director->getWinSize();
+
+    std::string backgroundImage = "GJ_sog_001.png"_spr;
+    std::string music = "SogLoop.mp3"_spr;
+
+    auto rand = std::rand() % 100 + 1;
+    if(rand == 46) {
+        backgroundImage = "GJ_evilSog_001.png"_spr;
+        music = "EvilSog.mp3"_spr;
+        this->runAction(CCSequence::create(CCDelayTime::create(8.5f), CCCallFuncO::create(this, callfuncO_selector(SogLayer::onClose), nullptr), 0));
+    }
     
-    m_background = CCSprite::createWithSpriteFrameName("GJ_sog_001.png"_spr);
+    m_background = CCSprite::createWithSpriteFrameName(backgroundImage.c_str());
     m_background->setAnchorPoint({ 0.f, 0.f });
     addChild(m_background, -2);
 
@@ -33,17 +43,20 @@ bool SogLayer::init() {
     m_background->setScaleY((winSize.height + 10.f) / m_background->getTextureRect().size.height);
     m_background->setPosition(ccp(-5, -5));
 
-    CCSprite* backSpr = CCSprite::createWithSpriteFrameName("GJ_arrow_03_001.png");
-    CCMenuItemSpriteExtra* backBtn = CCMenuItemSpriteExtra::create(backSpr, this, menu_selector(SogLayer::onClose));
+    if(rand != 46) {
+        CCSprite* backSpr = CCSprite::createWithSpriteFrameName("GJ_arrow_03_001.png");
+        CCMenuItemSpriteExtra* backBtn = CCMenuItemSpriteExtra::create(backSpr, this, menu_selector(SogLayer::onClose));
 
-    CCMenu* backMenu = CCMenu::create();
-    backMenu->addChild(backBtn);
-    addChild(backMenu, 1);
+        CCMenu* backMenu = CCMenu::create();
+        backMenu->addChild(backBtn);
+        addChild(backMenu, 1);
 
-    backMenu->setPosition(ccp(director->getScreenLeft() + 25.f, director->getScreenTop() - 22.f));
-    setKeyboardEnabled(true);
-    setKeypadEnabled(true);
-    GameManager::sharedState()->fadeInMusic("SogLoop.mp3"_spr);
+        backMenu->setPosition(ccp(director->getScreenLeft() + 25.f, director->getScreenTop() - 22.f));
+        setKeyboardEnabled(true);
+        setKeypadEnabled(true);
+    }
+
+    GameManager::sharedState()->fadeInMusic(music);
     //FMODAudioEngine::sharedEngine()->playMusic("SogLoop.mp3"_spr, true, 0.0f, 0);
     return true;
 }
@@ -53,7 +66,6 @@ void SogLayer::keyBackClicked() {
 }
 
 void SogLayer::onClose(CCObject*) {
-
     auto director = CCDirector::sharedDirector();
     auto winSize = director->getWinSize();
 
