@@ -1,4 +1,6 @@
 # Soggy Mod Changelog
+## v1.0.8
+- Added evil Soggy Cat
 ## v1.0.7
 - Finally fix soggy mod
 ## v1.0.6
