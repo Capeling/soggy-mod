@@ -2,9 +2,9 @@
 
 using namespace geode::prelude;
 
-SogLayer* SogLayer::create() {
+SogLayer* SogLayer::create(bool fromRope) {
     auto ret = new SogLayer();
-    if (ret && ret->init()) {
+    if (ret && ret->init(fromRope)) {
         ret->autorelease();
         return ret;
     }
@@ -12,16 +12,19 @@ SogLayer* SogLayer::create() {
     return nullptr;
 };
 
-CCScene* SogLayer::scene() {
-    auto layer = SogLayer::create();
+CCScene* SogLayer::scene(bool fromRope) {
+    auto layer = SogLayer::create(fromRope);
     auto scene = CCScene::create();
     scene->addChild(layer);
     return scene;
 }
 
-bool SogLayer::init() {
+bool SogLayer::init(bool fromRope) {
     if(!CCLayer::init())
         return false;
+
+    m_fromRope = fromRope;
+
     auto director = CCDirector::sharedDirector();
     auto winSize = director->getWinSize();
 
@@ -69,14 +72,19 @@ void SogLayer::onClose(CCObject*) {
     auto director = CCDirector::sharedDirector();
     auto winSize = director->getWinSize();
 
-    auto scene = director->getRunningScene();
-    auto garage = GJGarageLayer::scene();
-
-    CCDirector::get()->replaceScene(garage);
-
     this->retain();
     this->removeFromParentAndCleanup(false);
-    garage->addChild(this, 1000);
+
+    if(!m_fromRope) {
+        auto garage = GJGarageLayer::scene();
+
+        director->replaceScene(garage);
+        garage->addChild(this, 1000);
+    } else {
+        director->popScene();
+        director->getNextScene()->addChild(this, 1000);
+    }
+
 
     auto moveTo = CCMoveTo::create(0.3f, ccp(0, winSize.height));
     auto easeIn = CCEaseIn::create(moveTo, 2.0f);

@@ -1,12 +1,12 @@
 {
-	"geode": "3.8.1",
+	"geode": "3.9.0",
 	"gd": {
-		"android": "2.206",
-		"ios": "2.206",
-		"mac": "2.206",
-		"win": "2.206"
+		"android": "2.2073",
+		"ios": "2.2073",
+		"mac": "2.2073",
+		"win": "2.2073"
 	},
-	"version": "v1.0.8",
+	"version": "v1.0.9",
 	"id": "capeling.soggy-mod",
 	"name": "Soggy Mod",
 	"developers": [
