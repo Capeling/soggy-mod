@@ -99,7 +99,7 @@ void SogLayer::onClose(CCObject*) {
         garage->addChild(this, 1000);
     } else {
         director->popScene();
-        director->getNextScene()->addChild(this, 1000);
+        director->m_pNextScene->addChild(this, 1000);
     }
 
 
