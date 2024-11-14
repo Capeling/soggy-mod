@@ -45,16 +45,29 @@ bool SogLayer::init(bool fromRope) {
     m_background->setScaleX((winSize.width + 10.f) / m_background->getTextureRect().size.width);
     m_background->setScaleY((winSize.height + 10.f) / m_background->getTextureRect().size.height);
     m_background->setPosition(ccp(-5, -5));
+    m_background->setID("background");
 
     if(rand != 46) {
         CCSprite* backSpr = CCSprite::createWithSpriteFrameName("GJ_arrow_03_001.png");
         CCMenuItemSpriteExtra* backBtn = CCMenuItemSpriteExtra::create(backSpr, this, menu_selector(SogLayer::onClose));
+        backBtn->setID("back-button");
 
-        CCMenu* backMenu = CCMenu::create();
-        backMenu->addChild(backBtn);
-        addChild(backMenu, 1);
+        CCMenu* buttonMenu = CCMenu::create();
+        buttonMenu->addChild(backBtn);
+        addChild(buttonMenu, 1);
+        buttonMenu->setID("button-menu");
 
-        backMenu->setPosition(ccp(director->getScreenLeft() + 25.f, director->getScreenTop() - 22.f));
+        backBtn->setPosition(ccp(-winSize.width / 2 + 23.f, winSize.height / 2 - 25.f));
+
+        auto honkSpr = CCSprite::createWithSpriteFrameName("block005b_05_001.png");
+        honkSpr->setScale(3.f);
+        honkSpr->setOpacity(0);
+
+        auto honkBtn = CCMenuItemSpriteExtra::create(honkSpr, this, menu_selector(SogLayer::onHonk));
+        honkBtn->setPosition(ccp(-50.f, 17.f));
+
+        buttonMenu->addChild(honkBtn);
+
         setKeyboardEnabled(true);
         setKeypadEnabled(true);
     }
@@ -66,6 +79,10 @@ bool SogLayer::init(bool fromRope) {
 
 void SogLayer::keyBackClicked() {
     SogLayer::onClose(nullptr);
+}
+
+void SogLayer::onHonk(CCObject*) {
+    FMODAudioEngine::get()->playEffect("honk.wav"_spr);
 }
 
 void SogLayer::onClose(CCObject*) {

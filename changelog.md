@@ -1,6 +1,9 @@
 # Soggy Mod Changelog
 ## v1.0.9
 - Updated for support with 2.207
+- Added soggy button inside the level page
+- Added node ids for soggy mod nodes
+- You can now honk soggy cats nose
 ## v1.0.8
 - Added evil Soggy Cat
 ## v1.0.7

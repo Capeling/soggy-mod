@@ -12,6 +12,7 @@ public:
     static cocos2d::CCScene* scene(bool fromRope);
     bool init(bool fromRope);
     void onClose(CCObject*);
+    void onHonk(CCObject*);
     void keyBackClicked();
 };
 
