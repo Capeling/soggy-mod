@@ -1,4 +1,6 @@
 # Soggy Mod Changelog
+## v1.1.0
+- 2.2074
 ## v1.0.9
 - Updated for support with 2.207
 - Added soggy button inside the level page
