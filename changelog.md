@@ -1,4 +1,7 @@
 # Soggy Mod Changelog
+## v1.1.1
+- Fixed crash
+- Fixed leak
 ## v1.1.0
 - 2.2074
 ## v1.0.9

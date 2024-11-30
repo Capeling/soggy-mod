@@ -97,6 +97,7 @@ void SogLayer::onClose(CCObject*) {
 
         director->replaceScene(garage);
         garage->addChild(this, 1000);
+        this->release();
     } else {
         director->popScene();
         director->m_pNextScene->addChild(this, 1000);
@@ -110,5 +111,7 @@ void SogLayer::onClose(CCObject*) {
     auto ccSeq = CCSequence::create(easeIn, callFunc, 0);
     this->runAction(ccSeq);
     GameManager::sharedState()->fadeInMenuMusic();
-
+    
+    setKeyboardEnabled(false);
+    setKeypadEnabled(false);
 }
