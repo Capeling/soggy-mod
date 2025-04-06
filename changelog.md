@@ -1,4 +1,6 @@
 # Soggy Mod Changelog
+## v1.1.2
+- Added MacOS & iOS support
 ## v1.1.1
 - Fixed crash
 - Fixed leak
