@@ -1,5 +1,5 @@
 {
-	"geode": "4.0.1",
+	"geode": "4.3.1",
 	"gd": {
 		"android": "2.2074",
 		"ios": "2.2074",
@@ -26,13 +26,12 @@
 			"resources/EvilSog.mp3"
 		]
 	},
-	"dependencies": [
-        {
-            "id": "geode.node-ids",
-            "version": "v1.17.0-alpha.1",
-            "importance": "required"
-        }
-    ],
+	"dependencies": {
+		"geode.node-ids": {
+			"version": "v1.17.0-alpha.1",
+			"importance": "required"
+		}
+	},
 	"tags": [
 		"joke"
 	]
