@@ -28,7 +28,7 @@
 	},
 	"dependencies": {
 		"geode.node-ids": {
-			"version": "v1.21.1",
+			"version": "v1.21.0",
 			"importance": "required"
 		}
 	},
