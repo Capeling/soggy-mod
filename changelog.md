@@ -1,6 +1,6 @@
 # Soggy Mod Changelog
 ## v1.1.3
-- Bumped Geode version to 4.6.0 to support iOS JIT-less
+- Bumped Geode version to 4.6.3 to support iOS JIT-less (thanks slideglide :D)
 ## v1.1.2
 - Added MacOS & iOS support
 ## v1.1.1

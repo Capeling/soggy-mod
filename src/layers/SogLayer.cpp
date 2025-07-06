@@ -2,13 +2,15 @@
 
 using namespace geode::prelude;
 
+namespace soggy_mod {
+
 SogLayer* SogLayer::create(bool fromRope) {
     auto ret = new SogLayer();
-    if (ret && ret->init(fromRope)) {
+    if (ret->init(fromRope)) {
         ret->autorelease();
         return ret;
     }
-    CC_SAFE_DELETE(ret);
+    delete ret;
     return nullptr;
 };
 
@@ -63,7 +65,9 @@ bool SogLayer::init(bool fromRope) {
         honkSpr->setScale(3.f);
         honkSpr->setOpacity(0);
 
-        auto honkBtn = CCMenuItemSpriteExtra::create(honkSpr, this, menu_selector(SogLayer::onHonk));
+        auto honkBtn = CCMenuItemExt::createSpriteExtra(honkSpr, [this](auto selector) {
+            FMODAudioEngine::get()->playEffect("honk.wav"_spr);
+        });
         honkBtn->setPosition(ccp(-50.f, 17.f));
 
         buttonMenu->addChild(honkBtn);
@@ -73,16 +77,11 @@ bool SogLayer::init(bool fromRope) {
     }
 
     GameManager::sharedState()->fadeInMusic(music);
-    //FMODAudioEngine::sharedEngine()->playMusic("SogLoop.mp3"_spr, true, 0.0f, 0);
     return true;
 }
 
 void SogLayer::keyBackClicked() {
     SogLayer::onClose(nullptr);
-}
-
-void SogLayer::onHonk(CCObject*) {
-    FMODAudioEngine::get()->playEffect("honk.wav"_spr);
 }
 
 void SogLayer::onClose(CCObject*) {
@@ -114,4 +113,6 @@ void SogLayer::onClose(CCObject*) {
 
     setKeyboardEnabled(false);
     setKeypadEnabled(false);
+}
+
 }

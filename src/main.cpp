@@ -6,15 +6,20 @@
 
 using namespace geode::prelude;
 
-struct GJGarageLayerHook : Modify<GJGarageLayerHook, GJGarageLayer> {
+namespace soggy_mod {
+
+struct SoggyGJGarageLayer : Modify<SoggyGJGarageLayer, GJGarageLayer> {
 	bool init() {
 		if(!GJGarageLayer::init())
 			return false;
+		
 		auto director = CCDirector::sharedDirector();
     	auto winSize = director->getWinSize();
 
 		auto sogSpr = CCSprite::createWithSpriteFrameName("GJ_soggyBtn_001.png"_spr);
-		auto sogBtn = CCMenuItemSpriteExtra::create(sogSpr, this, menu_selector(GJGarageLayerHook::onSoggy));
+		auto sogBtn = CCMenuItemExt::createSpriteExtra(sogSpr, [](auto selector){
+			CCDirector::sharedDirector()->replaceScene(CCTransitionMoveInT::create(0.5f, SogLayer::scene(false)));
+		});
 		auto sogMenu = CCMenu::create();
 
 		sogBtn->m_animationType = MenuAnimationType::Move;
@@ -32,19 +37,20 @@ struct GJGarageLayerHook : Modify<GJGarageLayerHook, GJGarageLayer> {
 
 		return true;
 	}
-		void onSoggy(CCObject*) {
-		CCDirector::sharedDirector()->replaceScene(CCTransitionMoveInT::create(0.5f, SogLayer::scene(false)));
-	}
 };
 
-struct LevelInfoLayerHook : Modify<LevelInfoLayerHook, LevelInfoLayer> {
+struct SoggyLevelInfoLayer : Modify<SoggyLevelInfoLayer, LevelInfoLayer> {
 	bool init(GJGameLevel* level, bool challenge) {
-		if(!LevelInfoLayer::init(level, challenge)) {
+		if(!LevelInfoLayer::init(level, challenge))
 			return false;
-		}
+
+		if (!Mod::get()->getSettingValue<bool>("garageRope"))
+			return true;
 
 		auto sogSpr = CCSprite::createWithSpriteFrameName("GJ_soggyRope_001.png"_spr);
-		auto sogBtn = CCMenuItemSpriteExtra::create(sogSpr, this, menu_selector(LevelInfoLayerHook::onSoggy));
+		auto sogBtn = CCMenuItemExt::createSpriteExtra(sogSpr, [](auto selector){
+			CCDirector::sharedDirector()->pushScene(CCTransitionMoveInT::create(0.5f, SogLayer::scene(true)));
+		});
 		
 		auto garageMenu = static_cast<CCMenu*>(getChildByID("garage-menu"));
 		if(!garageMenu) {
@@ -67,7 +73,6 @@ struct LevelInfoLayerHook : Modify<LevelInfoLayerHook, LevelInfoLayer> {
 
 		return true;
 	}
-	void onSoggy(CCObject*) {
-		CCDirector::sharedDirector()->pushScene(CCTransitionMoveInT::create(0.5f, SogLayer::scene(true)));
-	}
 };
+
+}

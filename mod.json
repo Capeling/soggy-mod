@@ -1,5 +1,5 @@
 {
-	"geode": "4.6.0",
+	"geode": "4.6.3",
 	"gd": {
 		"win": "2.2074",
 		"mac": "2.2074",
@@ -30,6 +30,14 @@
 		"geode.node-ids": {
 			"version": "v1.21.0",
 			"importance": "required"
+		}
+	},
+	"settings": {
+		"garageRope": {
+			"type": "bool",
+			"default": true,
+			"name": "Rope in level layer",
+			"description": "Adds a rope to the level layer right next to the garage rope"
 		}
 	},
 	"tags": [
