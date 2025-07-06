@@ -1,5 +1,6 @@
 # Soggy Mod Changelog
 ## v1.1.3
+- Added setting to disable the rope in LevelInfoLayer
 - Bumped Geode version to 4.6.3 to support iOS JIT-less (thanks slideglide :D)
 ## v1.1.2
 - Added MacOS & iOS support
