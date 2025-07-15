@@ -19,6 +19,8 @@ protected:
 
     cocos2d::CCSprite* m_background = nullptr;
     bool m_fromRope = false;
+
+    int m_honkCount = 0;
 };
 
 }

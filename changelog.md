@@ -1,4 +1,6 @@
-# Soggy Mod Changelog
+## v1.1.4
+- Added new secret
+- Made honk button get higher pitched with each press (:D)
 ## v1.1.3
 - Added setting to disable the rope in LevelInfoLayer
 - Bumped Geode version to 4.6.3 to support iOS JIT-less (thanks slideglide :D)

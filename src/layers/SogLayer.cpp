@@ -30,17 +30,23 @@ bool SogLayer::init(bool fromRope) {
     auto director = CCDirector::sharedDirector();
     auto winSize = director->getWinSize();
 
-    std::string backgroundImage = "GJ_sog_001.png"_spr;
+    auto honkBtnPos = ccp(-50.f, -17.f);
+
+    std::string backgroundImage = "SM_sog_001.png"_spr;
     std::string music = "SogLoop.mp3"_spr;
 
     auto rand = std::rand() % 100 + 1;
     if(rand == 46) {
-        backgroundImage = "GJ_evilSog_001.png"_spr;
+        backgroundImage = "SM_evilSog_001.png"_spr;
         music = "EvilSog.mp3"_spr;
         this->runAction(CCSequence::create(CCDelayTime::create(8.5f), CCCallFuncO::create(this, callfuncO_selector(SogLayer::onClose), nullptr), 0));
+    } else if (rand > 90) {
+        backgroundImage = "SM_sog_02_001.png"_spr;
+        music = "SogLoop02.mp3"_spr;
+        honkBtnPos = ccp(34, 36);
     }
-    
-    m_background = CCSprite::createWithSpriteFrameName(backgroundImage.c_str());
+
+    m_background = CCSprite::create(backgroundImage.c_str());
     m_background->setAnchorPoint({ 0.f, 0.f });
     addChild(m_background, -2);
 
@@ -66,9 +72,12 @@ bool SogLayer::init(bool fromRope) {
         honkSpr->setOpacity(0);
 
         auto honkBtn = CCMenuItemExt::createSpriteExtra(honkSpr, [this](auto selector) {
-            FMODAudioEngine::get()->playEffect("honk.wav"_spr);
+            FMODAudioEngine::get()->playEffect("honk.wav"_spr, 1.0 + (m_honkCount * 0.01f), 0.0, 1.f);
+            m_honkCount++;
+            if (m_honkCount > 25)
+                m_honkCount = 0;
         });
-        honkBtn->setPosition(ccp(-50.f, 17.f));
+        honkBtn->setPosition(honkBtnPos);
 
         buttonMenu->addChild(honkBtn);
 

@@ -1,12 +1,12 @@
 {
-	"geode": "4.6.3",
+  "geode": "4.6.3",
 	"gd": {
 		"win": "2.2074",
 		"mac": "2.2074",
 		"android": "2.2074",
 		"ios": "2.2074"
 	},
-	"version": "v1.1.3",
+	"version": "v1.1.4",
 	"id": "capeling.soggy-mod",
 	"name": "Soggy Mod",
 	"developers": [
@@ -20,9 +20,13 @@
 				"resources/SoggySheet/*.png"
 			]
 		},
+		"sprites": [
+		    "resources/bgs/*.png"
+		],
 		"files": [
 			"resources/honk.wav",
 			"resources/SogLoop.mp3",
+			"resources/SogLoop02.mp3",
 			"resources/EvilSog.mp3"
 		]
 	},
