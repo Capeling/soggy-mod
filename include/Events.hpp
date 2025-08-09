@@ -4,10 +4,7 @@
 
 namespace soggy_mod {
     class OnSogLayer : public geode::Event {
-    protected:
-        SogLayer* m_layer;
     public:
-        OnSogLayer(SogLayer* layer, int rand) : m_layer(layer) {};
-        SogLayer* getLayer() const { return m_layer; };
+        OnSogLayer(SogLayer* layer, int rand) {};
     };
 }
