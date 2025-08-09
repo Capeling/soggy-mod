@@ -2,7 +2,7 @@
 #include <Geode/ui/Layout.hpp>
 #include <Geode/modify/GJGarageLayer.hpp>
 #include <Geode/modify/LevelInfoLayer.hpp>
-#include "layers/SogLayer.hpp"
+#include <layers/SogLayer.hpp>
 
 using namespace geode::prelude;
 

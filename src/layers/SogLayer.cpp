@@ -1,4 +1,5 @@
-#include "SogLayer.hpp"
+#include <layers/SogLayer.hpp>
+#include <Events.hpp>
 
 using namespace geode::prelude;
 
@@ -86,6 +87,7 @@ bool SogLayer::init(bool fromRope) {
     }
 
     GameManager::sharedState()->fadeInMusic(music);
+    OnSogLayer(this, rand).post();
     return true;
 }
 
