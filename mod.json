@@ -44,6 +44,9 @@
 			"description": "Adds a rope to the level layer right next to the garage rope"
 		}
 	},
+	"api": {
+		"include": [ "include/*.hpp", "include/layers/*.hpp" ]
+	},
 	"tags": [
 		"joke"
 	]
