@@ -1,3 +1,5 @@
+## v1.1.5
+- Added an events API
 ## v1.1.4
 - Added new secret
 - Made honk button get higher pitched with each press (:D)
