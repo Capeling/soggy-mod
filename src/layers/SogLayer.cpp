@@ -79,6 +79,7 @@ bool SogLayer::init(bool fromRope) {
                 m_honkCount = 0;
         });
         honkBtn->setPosition(honkBtnPos);
+        honkBtn->setID("honk-button");
 
         buttonMenu->addChild(honkBtn);
 
